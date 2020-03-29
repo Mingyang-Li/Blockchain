@@ -1,6 +1,9 @@
-class Blockchain:
-    def __init__(self, block, chain):
-        pass
-    
-    def idk_what_to_do():
-        pass
+import hashlib
+
+
+class Block:
+    def __init__(self, previous_hash, transactions):
+        self.previous_hash = previous_hash
+        self.transactions = transactions
+        string_to_hash = "".join(transactions) + previous_hash
+        self.block_hash = hashlib.sha256(string_to_hash.encode()).hexdigest()
